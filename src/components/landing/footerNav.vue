@@ -1,47 +1,47 @@
 <template>
-    <v-container fluid>
-        <v-footer app fixed class="flex justify-center justify-space-between py-4 px-14">
-                    <v-btn active-class="" v-for="icon,i in bottomIcons" :key="i" 
-                    fab small elevation="0" :to="icon.link" class="d-flex flex-column"
-                    >
-                        <v-icon>
-                            {{icon.icon}}
-                        </v-icon>
-                        <span>{{icon.name}}</span>
-                    </v-btn>
-        </v-footer>
-    </v-container>
+  <v-container>
+    <v-card height="40" width="100%">
+      <v-footer app fixed>
+        <v-card
+          color="transparent"
+          elevation="0"
+          class="d-flex align-center justify-space-around pa-0"
+          width="100%"
+          height="50"
+        >
+          <v-btn
+            active-class="green--text"
+            v-for="(icon, i) in bottomIcons"
+            :key="i"
+            text
+            fab
+            small
+            :to="icon.link"
+          >
+            <v-icon >
+              {{ icon.icon }}
+            </v-icon>
+          </v-btn>
+        </v-card>
+      </v-footer>
+    </v-card>
+  </v-container>
 </template>
 <script>
 export default {
-    data(){
-        return{
-            bottomIcons: [
-                {   
-                    icon: 'mdi-newspaper',
-                    link: '/news'
-                },
-                {
-                    icon: 'mdi-alert',
-                    link: '/panic-secction'
-                },
-                {
-                    icon: 'mdi-home-assistant',
-                    link: '/home'
-                },
-                {
-                    icon: 'mdi-comment-check',
-                    link: '/daily-routine'
-                },
-                {
-                    icon: 'mdi-file-tree',
-                    link: '/other-sections'
-                },
-            ],
-        
-        }
-    },
-
-
-}
+  data() {
+    return {
+      bottomIcons: [
+        {
+          icon: "mdi-file-tree",
+          link: "/daily-routine",
+        },
+        {
+          icon: "mdi-home-assistant",
+          link: "/home",
+        },
+      ],
+    };
+  },
+};
 </script>
