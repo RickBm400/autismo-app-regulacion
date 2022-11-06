@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card height="40" width="100%">
+    <v-card height="40" width="100%" elevation="0">
       <v-footer app fixed>
         <v-card
           color="transparent"
@@ -39,6 +39,10 @@ export default {
         {
           icon: "mdi-home-assistant",
           link: "/home",
+        },
+        {
+          icon: "mdi-account-heart",
+          link: "/user-advisor",
         },
       ],
     };

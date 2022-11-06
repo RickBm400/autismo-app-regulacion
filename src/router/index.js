@@ -15,6 +15,11 @@ const routes = [
     name: 'Rutinas Diarias',
     component: () => import('@/views/landingPage/dailyRoutine.vue')
   },
+  {
+    path: '/user-advisor',
+    name: 'Asistencia al usuario',
+    component: () => import('@/views/landingPage/userAdvisor.vue')
+  },
 ]
 
 const router = new VueRouter({

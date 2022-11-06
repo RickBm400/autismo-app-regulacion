@@ -3,7 +3,7 @@
    
     <router-view></router-view>
     <FooterNav></FooterNav>
-    <navBar></navBar>
+   
   </v-app>
 </template>
 

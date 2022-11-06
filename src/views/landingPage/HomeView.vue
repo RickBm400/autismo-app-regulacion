@@ -1,14 +1,6 @@
 <template>
     <v-container >
 
-        <v-sheet class="d-flex flex-row-reverse">
-            <v-btn :ripple="false" retain-focus-on-click fab small text elevation="0">
-                <v-icon>
-                    mdi-account-circle
-                </v-icon>
-                
-            </v-btn>
-        </v-sheet>
 
         <v-card class="ma-5" height="500" rounded="xl" elevation="5">
             <v-img src="@/assets/IMG/landing/background_landing.png" height="200">
