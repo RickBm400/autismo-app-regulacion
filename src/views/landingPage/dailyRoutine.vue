@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
-    <span class="px-5 d-flex justify-center" style="font-size: 20px"
-      >Actividades Diarias</span
+    <span class="px-5 d-flex justify-center font-weight-bold" style="font-size: 20px"
+      >Registros diarios</span
     >
     <v-dialog v-for="(item, i) in values" :key="i">
       <template v-slot:activator="{ on, attrs }">
@@ -33,25 +33,32 @@
         </v-card>
       </template>
       <template v-slot:default="dialog">
-        <v-card flat height="500" class="rounded-lg">
+        <v-card flat height="500" class="rounded-xl">
           <v-toolbar extended :color="item.icon.color" flat>
             <v-card
               style="top: 230px; background-color: transparent"
               height="450"
+              width="100%"
               class="rounded-lg  mb-5"
               flat
             >
               <v-card flat>
                 <v-card-title>Holamundo</v-card-title>
                 <v-card height="300" class=" overflow-auto pa-0" flat>
-                  <v-card-text>
-                    {{item.content}}
+                  <v-card-text class="pb-0">
+                    <v-textarea
+                    :full-width="true"
+                    :color="item.icon.color"
+                    label="Nueva entrada"
+                    :value="item.content" rows="8" :v-model="item.content">
+                    
+                    </v-textarea>
                   </v-card-text>
                 </v-card>
               </v-card>
 
               <v-card-actions class="d-flex flex-column">
-                <v-sheet class="d-flex justify-space-around pt-4" width="100%">
+                <v-sheet class="d-flex justify-space-around pt-0" width="100%">
                   <v-btn
                     v-for="item in statusButtons"
                     :key="item"
@@ -115,7 +122,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "red",
             status: "mdi-emoticon-sad-outline",
@@ -125,7 +132,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "yellow",
             status: "mdi-emoticon-neutral-outline",
@@ -135,7 +142,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "purple",
             status: "mdi-emoticon-excited-outline",
@@ -145,7 +152,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "green",
             status: "mdi-emoticon-outline",
@@ -155,7 +162,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "blue",
             status: "mdi-emoticon-sad-outline",
@@ -165,7 +172,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "red",
             status: "mdi-emoticon-sad-outline",
@@ -175,7 +182,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "red",
             status: "mdi-emoticon-sad-outline",
@@ -185,7 +192,7 @@ export default {
         {
           title: "Entrada",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste perferendis nihil ipsam sint maxime. csdckjsdnckjsdnkcsndjcnsd",
+            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
           icon: {
             color: "red",
             status: "mdi-emoticon-sad-outline",
