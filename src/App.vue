@@ -1,6 +1,6 @@
 <template>
   <v-app>
-   
+   <navBar></navBar>
     <router-view></router-view>
     <FooterNav></FooterNav>
    

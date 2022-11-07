@@ -10,15 +10,16 @@
           height="50"
         >
           <v-btn
-            active-class="green--text"
+            active-class="green--text font-weight-bold"
+            icon
+            plain
+            :ripple="false"
+            color="black"
             v-for="(icon, i) in bottomIcons"
             :key="i"
-            text
-            fab
-            small
             :to="icon.link"
           >
-            <v-icon >
+            <v-icon>
               {{ icon.icon }}
             </v-icon>
           </v-btn>

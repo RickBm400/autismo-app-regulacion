@@ -1,5 +1,5 @@
 <template>
-        <v-container fluid>
+        <v-container fluid class="mt-6">
         <v-row>
             <v-col cols="6">
                 <v-card color="red" height="250" class="rounded-xl" elevation="4">

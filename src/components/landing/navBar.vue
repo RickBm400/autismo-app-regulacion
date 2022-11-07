@@ -1,11 +1,37 @@
 <template>
-            <v-sheet class="d-flex flex-row-reverse">
-            <v-btn :ripple="false" retain-focus-on-click fab small text elevation="0">
-                <v-icon>
-                    mdi-account-circle
+<v-container fluid>
+    <v-app-bar app elevation="0" color="white" >
+        <v-icon>
+            mdi-account
+        </v-icon>
+        <v-spacer></v-spacer>
+        <v-menu>
+            <template v-slot:activator="{on, off}">
+                <v-icon
+                v-on="on"
+                v-bind="off">
+                    mdi-dots-vertical
                 </v-icon>
-                
-            </v-btn>
-        </v-sheet>
+            </template>
+            <v-list>
+                <v-list-item v-for="it in list" :key="it">
+                    <v-list-item-title>{{it}}</v-list-item-title>
+                </v-list-item>
+            </v-list>
+        </v-menu>
+    </v-app-bar>
+
+</v-container>    
 
 </template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            list:['Acerca de.','Encuesta de Satisfacción.', 'Contact Us.']
+        }
+    },
+}
+</script>
