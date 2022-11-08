@@ -3,7 +3,7 @@
     <v-card class="py-2" width="100%" elevation="0">
       <v-row>
         <v-col cols="9">
-          <v-card-title class="text-h5 font-weight-bold pb-5"> Registros Diarios </v-card-title>
+          <v-card-title class="text-h5 font-weight-bold pb-5"> Zona de desahogo </v-card-title>
             <v-card-subtitle class="text-left" style="line-height:1rem;">
               Escribe aquí tus entradas diarias sobre pensamientos, ideas o recuerdos importantes.
             </v-card-subtitle>

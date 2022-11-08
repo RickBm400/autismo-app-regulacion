@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: HomeView
   },
@@ -19,6 +19,11 @@ const routes = [
     path: '/user-advisor',
     name: 'Asistencia al usuario',
     component: () => import('@/views/landingPage/userAdvisor.vue')
+  },
+  {
+    path: '/regulation-section',
+    name: 'Zona de regulación',
+    component: () => import('@/views/landingPage/regulationSection.vue')
   },
 ]
 

@@ -11,7 +11,6 @@
         >
           <v-btn
             active-class="green--text font-weight-bold"
-            icon
             plain
             :ripple="false"
             color="black"
@@ -19,7 +18,13 @@
             :key="i"
             :to="icon.link"
           >
-            <v-icon>
+            <v-badge 
+                dot color="red" v-if="icon.link == '/regulation-section'">
+              <v-icon>
+                {{ icon.icon }}
+              </v-icon>
+            </v-badge>
+            <v-icon v-else>
               {{ icon.icon }}
             </v-icon>
           </v-btn>
@@ -39,11 +44,15 @@ export default {
         },
         {
           icon: "mdi-home-assistant",
-          link: "/home",
+          link: "/",
         },
         {
           icon: "mdi-account-heart",
           link: "/user-advisor",
+        },
+        {
+          icon: "mdi-order-bool-ascending-variant",
+          link: "/regulation-section",
         },
       ],
     };
