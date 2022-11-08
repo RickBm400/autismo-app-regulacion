@@ -18,3 +18,11 @@ export default {
     components: { FooterNav, navBar }
 };
 </script>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+*{
+  font-family: 'Lato',  sans-serif;
+}
+</style>

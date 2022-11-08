@@ -1,35 +1,77 @@
 <template>
-    <v-container >
+  <v-container fluid>
+    <v-sheet class="pa-5">
+      <v-row>
+        <v-col cols="9">
+          <span class="text-h4">Healt Mate</span>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </v-col>
+      </v-row>
+    </v-sheet>
 
+    <span class="d-flex justify-center text-h5">Componentes</span>
 
-        <v-card class="ma-5" height="500" rounded="xl" elevation="5">
-            <v-img src="@/assets/IMG/landing/background_landing.png" height="200">
-            </v-img>
-
-            <v-sheet class="px-5">
-                <v-card-title class="font-weight-bold">
-                    Novedades
-                </v-card-title>
-                <v-card-text class="pt-3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni temporibus odio cupiditate excepturi molestias rem unde modi facilis cum minus inventore provident, dolores officia eum, alias aspernatur praesentium tenetur nobis.
-                </v-card-text>
-
-            </v-sheet>
+    <v-row class="mt-6 pa-3">
+        <v-col cols="6" v-for="( item , i ) in cards" :key="i">
+        <v-card
+          height="150"
+          width="170"
+          class="rounded-xl d-flex flex-column align-center justify-center"
+          elevation="10"
+        >
+          <v-card-title class="pb-0 font-weight-bold">
+            {{ item.title }}
+          </v-card-title>
+          <v-icon :color="item.color" class="py-2" large>
+            {{item.icon}}
+          </v-icon>
+          <v-card-subtitle class="pt-0" style="font-size:10px; text-align:center">
+            {{item.content}}
+          </v-card-subtitle>
         </v-card>
-      
-    </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            
-        }
-    },
-}
+  data() {
+    return {
+      cards: [
+        {
+          color: '#ed9ac4',
+          title: 'Contenido',
+          content:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          icon: 'mdi-spa-outline'
+        },
+        {
+          color: '#dfed9a',
+          title: 'Contenido',
+          content:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          icon: 'mdi-checkbox-marked-circle-outline'
+        },
+        {
+          color: '#a99aed',
+          title: 'Contenido',
+          content:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          icon: 'mdi-checkbox-marked-circle-outline',
+        },
+        {
+          color: '#edb89a',
+          title: 'Contenido',
+          content:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          icon: 'mdi-checkbox-marked-circle-outline'
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
