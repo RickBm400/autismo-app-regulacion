@@ -19,7 +19,7 @@
             :to="icon.link"
           >
             <v-badge 
-                dot color="red" v-if="icon.link == '/regulation-section'">
+                dot color="red" :value="dotVisibility" v-if="icon.link == '/regulation-section'">
               <v-icon>
                 {{ icon.icon }}
               </v-icon>
@@ -34,6 +34,7 @@
   </v-container>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
   data() {
     return {
@@ -57,5 +58,9 @@ export default {
       ],
     };
   },
+
+  computed:{
+    ...mapState('regulation',['dotVisibility'])
+  }
 };
 </script>

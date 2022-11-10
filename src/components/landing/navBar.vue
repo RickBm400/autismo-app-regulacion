@@ -21,7 +21,7 @@
 export default {
   data() {
     return {
-      list: ["Acerca de", "Encuesta de Satisfacción", "Contact Us"],
+      list: ["Acerca de", "Encuesta de Satisfacción", "Contactanos"],
     };
   },
 };
