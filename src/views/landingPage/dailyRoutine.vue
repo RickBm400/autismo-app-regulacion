@@ -66,10 +66,10 @@
       </v-card>
       </template>
       <template v-slot:default="dialog">
-        <v-sheet :color="item.icon.color" class="rounded-t-xl"  height="22" ></v-sheet>
-        <v-card height="460" color="white" class="rounded-b-xl rounded-t-0" flat>
+        <v-sheet :color="item.icon.color" class="rounded-t-0"  height="22" ></v-sheet>
+        <v-card height="420" color="white" class="rounded-b-xl rounded-t-0" flat>
           <v-text-field
-            class="pt-7 mx-5 text-h5"
+            class="pt-3 mx-5 text-h5 font-weight-bold"
             solo
             flat
             :hide-details="true"
@@ -107,12 +107,12 @@
               </v-btn>
             </v-sheet>
 
-            <v-sheet width="100%" class="d-flex justify-center pt-5">
+            <v-sheet width="100%" class="d-flex justify-center pt-2">
               <v-btn
                 color="green"
                 text
                 @click="dialog.value = false"
-                class="rounded-pill pt-2 white--text"
+                class="rounded-pill pt-0 white--text"
               >
                 <v-icon>mdi-check</v-icon>
                 <span>Guardar</span>

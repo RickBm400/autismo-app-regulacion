@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid class="pt-8">
-    <v-card elevation="0">
-      <v-card-title class="font-weight-bold justify-center">
+  <v-container fluid class="pt-8 ">
+    <v-card elevation="0" class="mb-7">
+      <v-card-title style="font-size:30px" class="font-weight-bold justify-center mb-2">
         Zona de Regulación
       </v-card-title>
       <v-card-text class="text-center">
@@ -33,7 +33,7 @@
         <v-expand-transition>
           <v-card v-show="item.expand" elevation="0">
             <!-- tarjetas con cada pregunta a realizar -->
-            <v-card  v-for="(itema, j ) in item.content" :key="j"  class="mb-2 pa-5 rounded-lg" height="auto">
+            <v-card  v-for="(itema, j ) in item.content" :key="j" elevation="1"  class="mb-2 pa-5 rounded-lg" height="auto">
               <v-row>
                 <v-col cols="12" class="pb-0">
                   <span>{{itema.quest}}</span>
@@ -131,3 +131,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.v-card--link:before {
+  background: none;
+}
+</style>
