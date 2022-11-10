@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: [
     'vuetify'
   ],
-  // pwa: {
-  //   name: 'Health Mate',
-  // }
+  pwa: {
+    name: 'Health Mate',
+  }
 })

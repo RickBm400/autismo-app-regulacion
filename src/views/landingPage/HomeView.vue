@@ -3,21 +3,23 @@
     <v-sheet class="pa-5">
       <v-row>
         <v-col cols="9">
-          <span class="text-h4">Healt Mate</span>
+          <span class="text-h4">Health Mate</span>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         </v-col>
       </v-row>
     </v-sheet>
 
-    <span class="d-flex justify-center text-h5">Componentes</span>
-
-    <v-row class="mt-6 pa-3">
+    <div class="pa-5 pb-0">
+      <span class="d-flex mb-3 justify-center font-weight-bold text-h5">Componentes</span>
+      <p>La aplicación cuenta con distintos recursos a los que puedes acceder por medio de la barra inferior, dale un vistazo.</p>
+    </div>
+    <v-row class=" pa-3">
         <v-col cols="6" v-for="( item , i ) in cards" :key="i">
         <v-card
           height="150"
           width="170"
           class="rounded-xl d-flex flex-column align-center justify-center"
-          elevation="10"
+          elevation="3"
         >
           <v-card-title class="pb-0 font-weight-bold">
             {{ item.title }}
