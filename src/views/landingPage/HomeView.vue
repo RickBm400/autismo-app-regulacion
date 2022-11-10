@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="9">
           <span class="text-h4">Health Mate</span>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p>Aplicación web creada con la finalidad de brindar apoyo y acompañamiento emocional.</p>
         </v-col>
       </v-row>
     </v-sheet>
@@ -21,7 +21,7 @@
           class="rounded-xl d-flex flex-column align-center justify-center"
           elevation="3"
         >
-          <v-card-title class="pb-0 font-weight-bold">
+          <v-card-title class="pb-0 font-weight-bold text-center" style="word-break:break-word;font-size: 18px;">
             {{ item.title }}
           </v-card-title>
           <v-icon :color="item.color" class="py-2" large>
@@ -50,21 +50,21 @@ export default {
         },
         {
           color: '#dfed9a',
-          title: 'Contenido',
+          title: 'Herramientas',
           content:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          icon: 'mdi-checkbox-marked-circle-outline'
+          icon: 'mdi-tools'
         },
         {
           color: '#a99aed',
-          title: 'Contenido',
+          title: 'Desahogo',
           content:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          icon: 'mdi-checkbox-marked-circle-outline',
+          icon: 'mdi-account-voice',
         },
         {
           color: '#edb89a',
-          title: 'Contenido',
+          title: 'Acerca De',
           content:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
           icon: 'mdi-checkbox-marked-circle-outline'

@@ -100,11 +100,21 @@
       <!-- Fin Cuadro -->
     </div>
     <div class="mt-7 px-5 justify-center d-flex">
-      <v-btn elevation="2" :disabled="((questions.map(e=> e.content.map(e=>e.answer))).flat()).some(e=>e==null)?true:false"  @click="saveData" class="rounded-pill text-capitalize"
-      ><v-icon>mdi-content-save</v-icon> <span>Guardar</span></v-btn>
+      <v-btn
+        elevation="2"
+        :disabled="
+          questions
+            .map((e) => e.content.map((e) => e.answer))
+            .flat()
+            .some((e) => e == null)
+            ? true
+            : false
+        "
+        @click="saveData"
+        class="rounded-pill text-capitalize"
+        ><v-icon>mdi-content-save</v-icon> <span>Guardar</span></v-btn
+      >
     </div>
-    
-
   </v-container>
 </template>
 
@@ -123,12 +133,40 @@ export default {
               quest: "¿Has comido alimentos recientemente?",
               answer: null,
             },
+            {
+              quest: "¿Has desayunado el día de hoy?",
+              answer: null,
+            },
+            {
+              quest: "¿Has almorzado el día de hoy?",
+              answer: null,
+            },
+            {
+              quest: "¿Has cenado el día de hoy?",
+              answer: null,
+            },
+            {
+              quest: "¿Has comido algo rico el día de hoy?",
+              answer: null,
+            },
+            {
+              quest: "¿Ya has merendado?",
+              answer: null,
+            },
           ],
         },
         {
-          subName: "Ejercicio",
+          subName: "Cuidado corporal",
           expand: false,
           content: [
+            {
+              quest: "¿Te has estirado en la última hora?",
+              answer: null,
+            },
+            {
+              quest: "¿Has estado en la misma posición mucho tiempo?",
+              answer: null,
+            },
             {
               quest: "¿Has meditado recientemente?",
               answer: null,
@@ -140,11 +178,15 @@ export default {
           expand: false,
           content: [
             {
-              quest: "¿Has terminado todos tus deberes?",
+              quest: "¿Ya has dedicado tiempo a tu hobby?",
               answer: null,
             },
             {
-              quest: "¿Te sentiste motivado a realizar las tareas?",
+              quest: "¿Hay algún tema interesante que quieras averiguar?",
+              answer: null,
+            },
+            {
+              quest: "¿Te has relajado con cosas divertidas ya?",
               answer: null,
             },
           ],
@@ -155,11 +197,34 @@ export default {
           content: [
             {
               quest:
-                "¿has entablado conversaciones recientes con algún amigo cercano?",
+                "¿Has hablado con alguien el día de hoy sin intenciones académicas o laborales?",
               answer: null,
             },
             {
-              quest: "¿Te interesó los temas de conversación?",
+              quest: "¿Has compartido algo de ti mismo con alguien?",
+              answer: null,
+            },
+            {
+              quest: "¿Has pensado en saludar a alguien?",
+              answer: null,
+            },
+          ],
+        },
+        {
+          subName: "Descanso mental",
+          expand: false,
+          content: [
+            {
+              quest:
+                "¿Ya te has dado un tiempo para descansar?",
+              answer: null,
+            },
+            {
+              quest: "¿Hiciste ejercicios para relajarte que te ayuden? ¿Respirar profundo? ¿Mover las manos?",
+              answer: null,
+            },
+            {
+              quest: "No sonreir no está mal, ¿te estás forzando a mostrarte feliz? ",
               answer: null,
             },
           ],
@@ -174,6 +239,7 @@ export default {
 
     saveData() {
       this.dotState(this.dotVisibility);
+      
     },
   },
 

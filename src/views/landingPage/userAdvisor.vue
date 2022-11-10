@@ -7,22 +7,23 @@
       >
         Herramientas
       </v-card-title>
-      <v-card-text class="text-center">
+      <v-card-text class="text-center" style="font-weight:800">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta quis
         autem atque? Alias dolore cupiditate dignissimos.
       </v-card-text>
     </v-card>
-
+    
+    <v-row class="px-5">
+      <v-col :cols="$vuetify.breakpoint.smAndDown?12:6"
+      v-for="(item, i) in cardItems"
+      :key="i">
     <v-dialog
       fullscreen
       hide-overlay
       transition="dialog-bottom-transition"
-      v-for="(item, i) in cardItems"
-      :key="i"
+
     >
       <template v-slot:activator="{ on, off }">
-        <v-row class="px-5">
-          <v-col cols="12">
             <v-card
               v-bind="off"
               v-on="on"
@@ -40,8 +41,7 @@
                 item.icon
               }}</v-icon>
             </v-card>
-          </v-col>
-        </v-row>
+
       </template>
 
       <template v-slot:default="dialog">
@@ -87,6 +87,8 @@
         </v-card>
       </template>
     </v-dialog>
+  </v-col>
+        </v-row>
   </v-container>
 </template>
 

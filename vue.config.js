@@ -5,5 +5,8 @@ module.exports = defineConfig({
   ],
   pwa: {
     name: 'Health Mate',
+    workboxOptions: {
+      navigateFallback: 'index.html'
+    }
   }
 })
