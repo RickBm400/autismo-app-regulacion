@@ -3,129 +3,221 @@
     <v-card class="py-2" width="100%" elevation="0">
       <v-row>
         <v-col cols="9">
-          <v-card-title class="text-h5 font-weight-bold pb-5"> Zona de desahogo </v-card-title>
-            <v-card-subtitle class="text-left" style="line-height:1rem;">
-              Escribe aquí tus entradas diarias sobre pensamientos, ideas o recuerdos importantes.
-            </v-card-subtitle>
+          <v-card-title class="text-h5 font-weight-bold pb-5">
+            Zona de desahogo
+          </v-card-title>
+          <v-card-subtitle class="text-left" style="line-height: 1rem">
+            Escribe aquí tus entradas diarias sobre pensamientos, ideas o
+            recuerdos importantes.
+          </v-card-subtitle>
         </v-col>
-        <v-col cols="3" class="d-flex align-center justify-center ">
-          <v-btn
-            icon
-            plain
-            elevation="0"
-            class="green white--text"
-            :ripple="false"
-          >
-            <v-icon> mdi-plus </v-icon>
-          </v-btn>
+        <v-col cols="3" class="d-flex align-center justify-center">
+          <v-dialog>
+            <template v-slot:activator="{ on, off }">
+              <v-btn
+                icon
+                plain
+                v-bind="off"
+                v-on="on"
+                elevation="0"
+                class="green white--text"
+                :ripple="false"
+              >
+                <v-icon> mdi-plus </v-icon>
+              </v-btn>
+            </template>
+            <template v-slot:default="dialog">
+              <v-sheet
+                color="#9e9e9e"
+                class="rounded-t-0"
+                height="22"
+              ></v-sheet>
+              <v-card
+                height="420"
+                color="white"
+                class="rounded-b-0 rounded-t-0"
+                flat
+              >
+                <v-text-field
+                  class="pt-3 mx-5 text-h5 font-weight-bold"
+                  solo
+                  flat
+                  :hide-details="true"
+                  label="Nueva entrada"
+                >
+                </v-text-field>
+                <v-card-text class="py-0">
+                  <v-textarea
+                    :full-width="true"
+                    color="gray"
+                    label="..."
+                    :hide-details="true"
+                    rows="8"
+                  >
+                  </v-textarea>
+                </v-card-text>
+
+                <v-card-actions class="d-flex flex-column">
+                  <v-sheet
+                    class="d-flex justify-space-around pt-0"
+                    width="100%"
+                  >
+                    <v-btn
+                      v-for="(item ,i) in statusButtons"
+                      :key="i"
+                      fab
+                      plain
+                      active-class="font-weight-bold"
+                      small
+                      elevation="0"
+                    >
+                      <v-icon :color="item.color">
+                        {{ item.icon }}
+                      </v-icon>
+                    </v-btn>
+                  </v-sheet>
+
+                  <v-sheet width="100%" class="d-flex justify-center pt-2">
+                    <v-btn
+                      color="green"
+                      text
+                      @click="dialog.value = false"
+                      class="rounded-pill pt-0 white--text"
+                    >
+                      <v-icon>mdi-check</v-icon>
+                      <span>Guardar</span>
+                    </v-btn>
+                  </v-sheet>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
         </v-col>
       </v-row>
     </v-card>
 
-    <v-dialog v-for="(item, i) in values" :key="i">
-      <template v-slot:activator="{ on, attrs }">
-      <v-card 
-      flat
-      elevation="6"
-      class="rounded-lg my-3 mx-2 d-flex"
-      height="auto"
-      width="auto"
+    <v-row>
+      <v-col
+        :cols="$vuetify.breakpoint.smAndDown ? 12 : 4"
+        v-for="(item, i) in values"
+        :key="i"
       >
-        <v-card :color="item.icon.color" 
-        class="rounded-l-lg rounded-r-0 d-flex justify-center" style="width:10%;">
-          <v-icon color="white">
-            {{item.icon.status}}
-          </v-icon>
-        </v-card>
-        <v-card
-        style="width:90%"
-        class="rounded-l-0"
-        elevation="0"
-        >
-          <v-list-item two-line>
-            <v-list-item-content>
-              <v-list-item-title class="font-weight-bold">
-                {{ item.title }}
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ item.content }}
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-card-actions class="pt-0 px-5 d-flex justify-space-between">
-            <div>
-              <v-icon class="mr-3"
-              v-bind="attrs"
-              v-on="on" color="green">mdi-pencil</v-icon>
-              <v-icon color="red">mdi-delete-variant</v-icon>
-            </div>
-            <span style="font-size: 11px">{{ item.date }}</span>
-          </v-card-actions>
-        </v-card>
-      </v-card>
-      </template>
-      <template v-slot:default="dialog">
-        <v-sheet :color="item.icon.color" class="rounded-t-0"  height="22" ></v-sheet>
-        <v-card height="420" color="white" class="rounded-b-xl rounded-t-0" flat>
-          <v-text-field
-            class="pt-3 mx-5 text-h5 font-weight-bold"
-            solo
-            flat
-            :hide-details="true"
-            label="Titulo"
-            v-model="item.title"
-          >
-          </v-text-field>
-          <v-card-text class="py-0">
-            <v-textarea
-              :full-width="true"
-              :color="item.icon.color"
-              label="Nueva entrada"
-              :hide-details="true"
-              :value="item.content"
-              rows="8"
-              v-model="item.content"
+        <v-dialog>
+          <template v-slot:activator="{ on, attrs }">
+            <v-card
+              flat
+              elevation="6"
+              class="rounded-lg mx-2 d-flex"
+              height="auto"
+              width="auto"
             >
-            </v-textarea>
-          </v-card-text>
-
-          <v-card-actions class="d-flex flex-column">
-            <v-sheet class="d-flex justify-space-around pt-0" width="100%">
-              <v-btn
-                v-for="item in statusButtons"
-                :key="item"
-                fab
-                plain
-                active-class="font-weight-bold"
-                small
-                elevation="0"
+              <v-card
+                :color="item.icon.color"
+                class="rounded-l-lg rounded-r-0 d-flex justify-center"
+                style="width: 10%"
               >
-                <v-icon :color="item.color">
-                  {{ item.icon }}
+                <v-icon color="white">
+                  {{ item.icon.status }}
                 </v-icon>
-              </v-btn>
-            </v-sheet>
+              </v-card>
+              <v-card style="width: 90%" class="rounded-l-0" elevation="0">
+                <v-list-item two-line>
+                  <v-list-item-content>
+                    <v-list-item-title class="font-weight-bold">
+                      {{ item.title }}
+                    </v-list-item-title>
+                    <v-list-item-subtitle>
+                      {{ item.content }}
+                    </v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
 
-            <v-sheet width="100%" class="d-flex justify-center pt-2">
-              <v-btn
-                color="green"
-                text
-                @click="dialog.value = false"
-                class="rounded-pill pt-0 white--text"
+                <v-card-actions class="pt-0 px-5 d-flex justify-space-between">
+                  <div>
+                    <v-icon class="mr-3" v-bind="attrs" v-on="on" color="green"
+                      >mdi-pencil</v-icon
+                    >
+                    <v-icon color="red">mdi-delete-variant</v-icon>
+                  </div>
+                  <span style="font-size: 11px">{{ item.date }}</span>
+                </v-card-actions>
+              </v-card>
+            </v-card>
+          </template>
+          <template v-slot:default="dialog">
+            <v-sheet
+              :color="item.icon.color"
+              class="rounded-t-0"
+              height="22"
+            ></v-sheet>
+            <v-card
+              height="420"
+              color="white"
+              class="rounded-b-0 rounded-t-0"
+              flat
+            >
+              <v-text-field
+                class="pt-3 mx-5 text-h5 font-weight-bold"
+                solo
+                flat
+                :hide-details="true"
+                label="Titulo"
+                v-model="item.title"
               >
-                <v-icon>mdi-check</v-icon>
-                <span>Guardar</span>
-              </v-btn>
-            </v-sheet>
-          </v-card-actions>
-        </v-card>
-      </template>
-    </v-dialog>
+              </v-text-field>
+              <v-card-text class="py-0">
+                <v-textarea
+                  :full-width="true"
+                  :color="item.icon.color"
+                  label="Nueva entrada"
+                  :hide-details="true"
+                  :value="item.content"
+                  rows="8"
+                  v-model="item.content"
+                >
+                </v-textarea>
+              </v-card-text>
+
+              <v-card-actions class="d-flex flex-column">
+                <v-sheet class="d-flex justify-space-around pt-0" width="100%">
+                  <v-btn
+                    v-for="(item,i) in statusButtons"
+                    :key="i"
+                    fab
+                    plain
+                    active-class="font-weight-bold"
+                    small
+                    elevation="0"
+                  >
+                    <v-icon :color="item.color">
+                      {{ item.icon }}
+                    </v-icon>
+                  </v-btn>
+                </v-sheet>
+
+                <v-sheet width="100%" class="d-flex justify-center pt-2">
+                  <v-btn
+                    color="green"
+                    text
+                    @click="dialog.value = false"
+                    class="rounded-pill pt-0 white--text"
+                  >
+                    <v-icon>mdi-check</v-icon>
+                    <span>Guardar</span>
+                  </v-btn>
+                </v-sheet>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import vuetify from "@/plugins/vuetify";
+
 export default {
   data() {
     return {
@@ -151,6 +243,16 @@ export default {
           color: "purple",
         },
       ],
+
+      newRegist: {
+        title: "",
+        content: "",
+        icon: {
+          color: "",
+          status: "",
+        },
+        date: "",
+      },
 
       values: [
         {
@@ -197,8 +299,6 @@ export default {
     };
   },
 
-  methods:{
-    
-  }
+  methods: {},
 };
 </script>
