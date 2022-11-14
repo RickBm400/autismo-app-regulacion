@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView
   },
@@ -25,6 +25,11 @@ const routes = [
     name: 'Zona de regulación',
     component: () => import('@/views/landingPage/regulationSection.vue')
   },
+  {
+    path: '/login',
+    name: 'Inicio Sección',
+    component: () => import('@/views/sections/login.vue')
+  },
 ]
 
 const router = new VueRouter({
@@ -32,4 +37,7 @@ const router = new VueRouter({
   routes
 })
 
+
+
 export default router
+    

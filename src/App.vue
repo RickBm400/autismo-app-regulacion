@@ -1,8 +1,8 @@
 <template>
   <v-app>
-   <navBar></navBar>
+   <navBar  v-if="!$route.fullPath.includes('/login')"></navBar>
     <router-view></router-view>
-    <FooterNav></FooterNav>
+    <FooterNav v-if="!$route.fullPath.includes('/login')"></FooterNav>
    
   </v-app>
 </template>

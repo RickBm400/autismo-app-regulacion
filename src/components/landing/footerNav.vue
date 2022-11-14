@@ -45,7 +45,7 @@ export default {
         },
         {
           icon: "mdi-home-assistant",
-          link: "/",
+          link: "/home",
         },
         {
           icon: "mdi-account-heart",

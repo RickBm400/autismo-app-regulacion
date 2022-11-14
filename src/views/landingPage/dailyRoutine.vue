@@ -12,7 +12,7 @@
           </v-card-subtitle>
         </v-col>
         <v-col cols="3" class="d-flex align-center justify-center">
-          <v-dialog>
+          <v-dialog >
             <template v-slot:activator="{ on, off }">
               <v-btn
                 icon
@@ -26,9 +26,9 @@
                 <v-icon> mdi-plus </v-icon>
               </v-btn>
             </template>
-            <template v-slot:default="dialog">
+            <template v-slot:default="dialog" >
               <v-sheet
-                color="#9e9e9e"
+                :color="newRegist.icon.color || '#9e9e9e'"
                 class="rounded-t-0"
                 height="22"
               ></v-sheet>
@@ -44,6 +44,7 @@
                   flat
                   :hide-details="true"
                   label="Nueva entrada"
+                  v-model="newRegist.title"
                 >
                 </v-text-field>
                 <v-card-text class="py-0">
@@ -53,6 +54,7 @@
                     label="..."
                     :hide-details="true"
                     rows="8"
+                    v-model="newRegist.content"
                   >
                   </v-textarea>
                 </v-card-text>
@@ -63,12 +65,13 @@
                     width="100%"
                   >
                     <v-btn
-                      v-for="(item ,i) in statusButtons"
+                      v-for="(item, i) in statusButtons"
                       :key="i"
                       fab
-                      plain
+                      text
                       active-class="font-weight-bold"
                       small
+                      @click="changeStatus(item)"
                       elevation="0"
                     >
                       <v-icon :color="item.color">
@@ -81,7 +84,7 @@
                     <v-btn
                       color="green"
                       text
-                      @click="dialog.value = false"
+                      @click="dialog.value = false, setNewData()"
                       class="rounded-pill pt-0 white--text"
                     >
                       <v-icon>mdi-check</v-icon>
@@ -117,7 +120,7 @@
                 style="width: 10%"
               >
                 <v-icon color="white">
-                  {{ item.icon.status }}
+                  {{ item.icon.icon }}
                 </v-icon>
               </v-card>
               <v-card style="width: 90%" class="rounded-l-0" elevation="0">
@@ -181,16 +184,17 @@
               <v-card-actions class="d-flex flex-column">
                 <v-sheet class="d-flex justify-space-around pt-0" width="100%">
                   <v-btn
-                    v-for="(item,i) in statusButtons"
+                    v-for="(icon, i) in statusButtons"
                     :key="i"
                     fab
                     plain
                     active-class="font-weight-bold"
                     small
+                    @click="updateIcon(icon, item)"
                     elevation="0"
                   >
-                    <v-icon :color="item.color">
-                      {{ item.icon }}
+                    <v-icon :color="icon.color">
+                      {{ icon.icon }}
                     </v-icon>
                   </v-btn>
                 </v-sheet>
@@ -199,11 +203,13 @@
                   <v-btn
                     color="green"
                     text
-                    @click="dialog.value = false"
+                    @click="dialog.value = false, updateData(item)"
                     class="rounded-pill pt-0 white--text"
                   >
                     <v-icon>mdi-check</v-icon>
-                    <span>Guardar</span>
+                    <span>
+                      Actualizar
+                    </span>
                   </v-btn>
                 </v-sheet>
               </v-card-actions>
@@ -216,9 +222,27 @@
 </template>
 
 <script>
-import vuetify from "@/plugins/vuetify";
+import { mapState } from "vuex";
+import { onValue, ref, push, set, update } from "firebase/database";
+import firebase from "@/firebase/index";
 
 export default {
+  computed: {
+    ...mapState("user", ["user"]),
+  },
+  mounted() {
+    if (this.user._id) {
+      this.values = this.user.entries;
+    } else {
+      let tokenId = (JSON.parse(localStorage.getItem('user')))._id
+      console.log(tokenId);
+      onValue(ref(firebase.db, `users/${tokenId}/entries`),(snapshot=>{
+        this.values = snapshot.val();
+        console.log(this.values);
+      }))
+    }
+    console.log(this.user);
+  },
   data() {
     return {
       statusButtons: [
@@ -249,56 +273,84 @@ export default {
         content: "",
         icon: {
           color: "",
-          status: "",
+          icon: "",
+        },
+        date: "",
+      },
+      newRegist1: {
+        title: "",
+        content: "",
+        icon: {
+          color: "",
+          icon: "",
         },
         date: "",
       },
 
-      values: [
-        {
-          title: "Entrada",
-          content:
-            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
-          icon: {
-            color: "red",
-            status: "mdi-emoticon-sad-outline",
-          },
-          date: "10-10-2022",
-        },
-        {
-          title: "Entrada",
-          content:
-            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
-          icon: {
-            color: "yellow",
-            status: "mdi-emoticon-neutral-outline",
-          },
-          date: "10-10-2022",
-        },
-        {
-          title: "Entrada",
-          content:
-            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
-          icon: {
-            status: "mdi-emoticon-cry-outline",
-            color: "purple",
-          },
-          date: "10-10-2022",
-        },
-        {
-          title: "Entrada",
-          content:
-            "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
-          icon: {
-            status: "mdi-emoticon-excited-outline",
-            color: "green",
-          },
-          date: "10-10-2022",
-        },
-      ],
+      values: [],
+      // {
+      //   title: "Entrada",
+      //   content:
+      //     "Este es un texto de prueba que ilustra el seguimiento diario del usuario",
+      //   icon: {
+      //     color: "red",
+      //     status: "mdi-emoticon-sad-outline",
+      //   },
+      //   date: "10-10-2022",
+      // },
     };
   },
 
-  methods: {},
+  methods: {
+    changeStatus(item){
+      this.newRegist.icon = {
+        color:item.color,
+        icon:item.icon
+      }
+    },  
+
+    setNewData(){
+      let keyId=(JSON.parse(localStorage.getItem('user')))._id
+      set(ref(firebase.db, `users/${keyId}/entries/${this.values.length}`), {
+        title: this.newRegist.title,
+        content: this.newRegist.content ,
+        icon: {
+          color: this.newRegist.icon.color,
+          icon: this.newRegist.icon.icon,
+        },
+        date: this.getActualDate(),
+      });
+      this.newRegist=this.newRegist1
+    },
+
+    updateIcon(icon, item){
+      this.values[this.values.indexOf(item)].icon={
+        color: icon.color,
+        icon: icon.icon
+      }
+    },  
+
+    getActualDate(){
+      const date = new Date()
+      return date.toJSON().slice(0,10)
+    },
+
+    updateData(data){
+      let keyId=(JSON.parse(localStorage.getItem('user')))._id
+      let indexValue = this.values.indexOf(data);
+      const updates = {}
+      updates[`users/${keyId}/entries/${indexValue}`]={
+        title: data.title,
+        content: data.content,
+        icon: {
+          color: data.icon.color,
+          icon: data.icon.icon,
+        },
+        date: this.getActualDate(),
+      }
+
+      update(ref(firebase.db), updates)
+    }
+  },
 };
 </script>

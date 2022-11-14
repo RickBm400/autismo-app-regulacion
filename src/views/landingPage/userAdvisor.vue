@@ -98,14 +98,14 @@
 </template>
 
 <script>
-import { onValue, set , ref } from "firebase/database";
-import db from "@/firebase/index";
+import { onValue , ref } from "firebase/database";
+import firebase from "@/firebase/index";
 
 export default {
   
 
   mounted(){
-      onValue(ref(db, "tools"), (snapshot) => {
+      onValue(ref(firebase.db, "tools"), (snapshot) => {
         const data = snapshot.val(); 
         this.cardItems = data
       });
@@ -119,7 +119,7 @@ export default {
       cardItems: [],
       // {
       //   title: "No se como me siento",
-      //   icon: "mdi-lightbulb-question-outline",
+      //   icon: "mdi-lightbulb-question-outline",j
       //   color: "purple",
       //   qans: [
       //     {
@@ -138,42 +138,6 @@ export default {
       //   ],
       // },
 
-      // {
-      //   title: "Depresión",
-      //   icon: "mdi-weather-lightning-rainy",
-      //   color: "red",
-      //   qans: [
-      //     {
-      //       expand: false,
-      //       qTitle: "No me siento con energía",
-      //       cause: "Causas del por qué no te sientes con energía",
-      //       solution:
-      //         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!",
-      //     },
-      //     {
-      //       expand: false,
-      //       qTitle: "Me encuentro inseguro de mi mismo",
-      //       cause: "Causas del por qué no te sientes seguro de ti mismo",
-      //       solution:
-      //         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!",
-      //     },
-      //   ],
-      // },
-      // {
-      //   title: "Estrés",
-      //   icon: "mdi-lightning-bolt-outline",
-      //   color: "orange",
-      // },
-      // {
-      //   title: "Ansiedad",
-      //   icon: "mdi-sine-wave",
-      //   color: "blue",
-      // },
-      // {
-      //   title: "Problemas de comunicación",
-      //   icon: "mdi-lightbulb-group-outline",
-      //   color: "green",
-      // },
     };
   },
 };

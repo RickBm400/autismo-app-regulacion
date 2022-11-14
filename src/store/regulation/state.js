@@ -1,3 +1,3 @@
 export default {
-    dotVisibility:false
+    dotVisibility:false,
 }
