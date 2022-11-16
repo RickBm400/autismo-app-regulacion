@@ -81,7 +81,7 @@ export default {
                 const data = (snapshot.val())[userData._id]
                 this.setUser(data)
                 localStorage.setItem('user', JSON.stringify(userData))
-                this.$router.push('/home')
+                this.$router.go()
             })
         }
 

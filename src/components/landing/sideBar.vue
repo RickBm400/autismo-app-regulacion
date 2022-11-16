@@ -48,7 +48,7 @@ export default {
         ...mapState('user',['user'])
     },
     mounted(){
-        this.userTag=this.user.email
+        this.userTag=(JSON.parse(localStorage.getItem('user'))).email
     },  
     methods:{
         ...mapMutations('user', ['logOut']),

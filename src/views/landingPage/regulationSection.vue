@@ -14,11 +14,11 @@
     </v-card>
 
     <!-- Listado de preguntas a realizar -->
-    <div v-for="(item, i) in questions" style="width:100%" :key="i" class="px-5 d-flex flex-column align-center justify-center">
+    <div v-for="(item, i) in questions" style="width:100%" :key="i" class=" d-flex flex-column align-center justify-center">
       <!-- Carta con titulo del grupo de preguntas -->
       <v-card
         height="60"
-        width="700"
+        :width="$vuetify.breakpoint.smAndDown?300: 700"
         max-width="700"
         class="my-3 rounded-lg d-flex align-center"
         elevation="7"
@@ -49,7 +49,7 @@
           <v-card
             v-for="(itema, j) in item.content"
             :key="j"
-            width="700"
+            :width="$vuetify.breakpoint.smAndDown?300: 700"
             max-width="700"
             elevation="3"
             class="mb-2 pa-5 rounded-lg"

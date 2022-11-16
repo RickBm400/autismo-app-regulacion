@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid>
-    <v-card  width="100%" elevation="0">
-      <v-row>
-        <v-col cols="9">
+  <v-container fluid :class="$vuetify.breakpoint.smAndDown?'pa-0':'d-flex'">
+    <v-card  :width="$vuetify.breakpoint.smAndDown?'100%': '40%'" elevation="0" class="align-center">
+      <v-row >
+        <v-col :cols="$vuetify.breakpoint.smAndDown? 9:12">
           <v-card-title class="text-h5 font-weight-bold pb-5">
             Zona de desahogo
           </v-card-title>
@@ -11,7 +11,7 @@
             recuerdos importantes.
           </v-card-subtitle>
         </v-col>
-        <v-col cols="3" class="d-flex align-center justify-center">
+        <v-col :cols="$vuetify.breakpoint.smAndDown? 3:12" class="d-flex align-center justify-center">
           <v-dialog max-width="400">
             <template v-slot:activator="{ on, off }">
               <v-btn
@@ -20,11 +20,11 @@
                 v-bind="off"
                 v-on="on"
                 elevation="0"
-                class="green white--text"
+                class="green white--text rounded-pill"
                 :ripple="false"
               >
                 <v-icon> mdi-plus </v-icon>
-                <span v-if="!$vuetify.breakpoint.smAndDown" style="font-weight:800" class="text-capitalize white--text">Nueva Entrada</span>
+                <span v-if="!$vuetify.breakpoint.smAndDown" style="font-weight:800" class=" text-capitalize white--text">Nueva Entrada</span>
               </v-btn>
             </template>
             <template v-slot:default="dialog" >
@@ -100,9 +100,10 @@
       </v-row>
     </v-card>
 
-    <v-row>
+<v-card :width="$vuetify.breakpoint.smAndDown?'100%':'60%'" :height="$vuetify.breakpoint.mdAndUp?'600':'auto'" :class="$vuetify.breakpoint.mdAndUp?'overflow-auto':''" class="mt-5 pt-3 px-3 " elevation="0">
+  <v-row>
       <v-col
-        :cols="$vuetify.breakpoint.smAndDown ? 12 : 4"
+        :cols="$vuetify.breakpoint.smAndDown ? 12 : 12"
         v-for="(item, i) in values"
         :key="i"
       >
@@ -222,13 +223,14 @@
           </template>
         </v-dialog>
       </v-col>
-    </v-row>
+  </v-row>
+</v-card>
   </v-container>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { onValue, ref, remove, set, update } from "firebase/database";
+import { onValue, ref, set, update } from "firebase/database";
 import firebase from "@/firebase/index";
 
 export default {
@@ -367,3 +369,18 @@ export default {
   },
 };
 </script>
+<style >
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #94918c;
+  border-radius: 100px;
+}
+</style>
