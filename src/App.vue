@@ -1,21 +1,28 @@
 <template>
   <v-app>
    <navBar  v-if="!$route.fullPath.includes('/login')"></navBar>
-    <router-view></router-view>
-    <FooterNav v-if="!$route.fullPath.includes('/login')"></FooterNav>
+    <side-bar v-if="!$route.fullPath.includes('/login') && $vuetify.breakpoint.mdAndUp"></side-bar>
+    <FooterNav v-if="!$route.fullPath.includes('/login') && $vuetify.breakpoint.smAndDown"></FooterNav>
    
+    <v-main class="pt-0">
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+
   </v-app>
 </template>
 
 <script>
 import FooterNav from './components/landing/footerNav.vue'
 import navBar from './components/landing/navBar.vue'
+import sideBar from './components/landing/sideBar.vue'
 export default {
     name: "App",
     data() {
         return {};
     },
-    components: { FooterNav, navBar }
+    components: { FooterNav, navBar, sideBar }
 };
 </script>
 <style>

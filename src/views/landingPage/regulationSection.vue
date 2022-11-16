@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pt-8">
+  <v-container fluid >
     <v-card elevation="0" class="mb-7">
       <v-card-title
         style="font-size: 30px"
@@ -14,10 +14,12 @@
     </v-card>
 
     <!-- Listado de preguntas a realizar -->
-    <div v-for="(item, i) in questions" :key="i" class="px-5">
+    <div v-for="(item, i) in questions" style="width:100%" :key="i" class="px-5 d-flex flex-column align-center justify-center">
       <!-- Carta con titulo del grupo de preguntas -->
       <v-card
         height="60"
+        width="700"
+        max-width="700"
         class="my-3 rounded-lg d-flex align-center"
         elevation="7"
         @click="item.expand = !item.expand"
@@ -47,7 +49,9 @@
           <v-card
             v-for="(itema, j) in item.content"
             :key="j"
-            elevation="1"
+            width="700"
+            max-width="700"
+            elevation="3"
             class="mb-2 pa-5 rounded-lg"
             height="auto"
           >

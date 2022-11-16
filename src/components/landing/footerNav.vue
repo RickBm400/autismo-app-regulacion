@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-card height="40" width="100%" elevation="0">
+  <v-container fluid>
+    <v-card width="100%" elevation="0">
       <v-footer app fixed>
         <v-card
           color="transparent"

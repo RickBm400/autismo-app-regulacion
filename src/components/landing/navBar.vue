@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-app-bar app elevation="0" color="white">
-      <v-icon> mdi-account </v-icon>
+      <v-icon v-if="$vuetify.breakpoint.mdAndDown"> mdi-account </v-icon>
       <v-spacer></v-spacer>
       <v-menu>
         <template v-slot:activator="{ on, off }">

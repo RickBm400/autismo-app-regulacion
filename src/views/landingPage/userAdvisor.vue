@@ -73,7 +73,7 @@
                   <v-icon :color="item.color" class="px-2">
                     {{ !subItem.expand ? "mdi-plus" : "mdi-minus" }}
                   </v-icon>
-                  <span>{{ subItem.qtitle }}</span>
+                  <span>{{ subItem.qTitle }}</span>
                 </v-card>
                 <v-expand-transition>
                   <v-sheet v-show="subItem.expand" height="auto" class="pa-2">
@@ -118,25 +118,58 @@ export default {
     return {
       cardItems: [],
       // {
-      //   title: "No se como me siento",
-      //   icon: "mdi-lightbulb-question-outline",j
-      //   color: "purple",
-      //   qans: [
-      //     {
-      //       expand: false,
-      //       qTitle: "No me siento con energía",
-      //       cause: "Causas del por qué no te sientes con energía",
-      //       solution: "csidmcposdkspcoksdpcksd",
-      //     },
-      //     {
-      //       expand: false,
-      //       qTitle: "Me encuentro inseguro de mi mismo",
-      //       cause: "Causas del por qué no te sientes seguro de ti mismo",
-      //       solution:
-      //         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!",
-      //     },
-      //   ],
-      // },
+      //     title: "No se como me siento",
+      //     icon: "mdi-lightbulb-question-outline",
+      //     color: "purple",
+      //     qans:[
+      //         {
+      //           expand: false,
+      //           qTitle: 'No me siento con energía',
+      //           cause: 'Causas del por qué no te sientes con energía',
+      //           solution: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!'
+      //       },
+      //       {
+      //           expand: false,
+      //           qTitle: 'Me encuentro inseguro de mi mismo',
+      //           cause: 'Causas del por qué no te sientes seguro de ti mismo',
+      //           solution: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!'
+      //       },
+      //     ]
+      //   },
+      //   {
+      //     title: "Depresión",
+      //     icon: "mdi-weather-lightning-rainy",
+      //     color: "red",
+      //     qans:[
+      //         {
+      //           expand: false,
+      //           qTitle: 'No me siento con energía',
+      //           cause: 'Causas del por qué no te sientes con energía',
+      //           solution: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!'
+      //       },
+      //       {
+      //           expand: false,
+      //           qTitle: 'Me encuentro inseguro de mi mismo',
+      //           cause: 'Causas del por qué no te sientes seguro de ti mismo',
+      //           solution: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!'
+      //       },
+      //     ]
+      //   },
+      //   {
+      //     title: "Estrés",
+      //     icon: "mdi-lightning-bolt-outline",
+      //     color: "orange",
+      //   },
+      //   {
+      //     title: "Ansiedad",
+      //     icon: "mdi-sine-wave",
+      //     color: "blue",
+      //   },
+      //   {
+      //     title: "Problemas de comunicación",
+      //     icon: "mdi-lightbulb-group-outline",
+      //     color: "green",
+      //   },
 
     };
   },

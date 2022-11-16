@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-card class="py-2" width="100%" elevation="0">
+    <v-card  width="100%" elevation="0">
       <v-row>
         <v-col cols="9">
           <v-card-title class="text-h5 font-weight-bold pb-5">
@@ -12,10 +12,10 @@
           </v-card-subtitle>
         </v-col>
         <v-col cols="3" class="d-flex align-center justify-center">
-          <v-dialog >
+          <v-dialog max-width="400">
             <template v-slot:activator="{ on, off }">
               <v-btn
-                icon
+                :icon="$vuetify.breakpoint.mdAndDown"
                 plain
                 v-bind="off"
                 v-on="on"
@@ -24,6 +24,7 @@
                 :ripple="false"
               >
                 <v-icon> mdi-plus </v-icon>
+                <span v-if="!$vuetify.breakpoint.smAndDown" style="font-weight:800" class="text-capitalize white--text">Nueva Entrada</span>
               </v-btn>
             </template>
             <template v-slot:default="dialog" >
@@ -105,7 +106,7 @@
         v-for="(item, i) in values"
         :key="i"
       >
-        <v-dialog>
+        <v-dialog max-width="400">
           <template v-slot:activator="{ on, attrs }">
             <v-card
               flat
@@ -123,24 +124,28 @@
                   {{ item.icon.icon }}
                 </v-icon>
               </v-card>
-              <v-card style="width: 90%" class="rounded-l-0" elevation="0">
-                <v-list-item two-line>
-                  <v-list-item-content>
-                    <v-list-item-title class="font-weight-bold">
-                      {{ item.title }}
-                    </v-list-item-title>
-                    <v-list-item-subtitle>
-                      {{ item.content }}
-                    </v-list-item-subtitle>
-                  </v-list-item-content>
-                </v-list-item>
+              <v-card style="width: 90%" class="rounded-l-0 rounded-r-lg" elevation="0">
+                <div class="d-flex align-center">
+                  <v-list-item two-line class="pr-0">
+                    <v-list-item-content>
+                      <v-list-item-title class="font-weight-bold">
+                        {{ item.title }}
+                      </v-list-item-title>
+                      <v-list-item-subtitle>
+                        {{ item.content }}
+                      </v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+                  <v-btn @click="deleteEntrance(item)" elevation="0" plain class="px-4">
+                    <v-icon color="red">mdi-delete-variant</v-icon>
+                  </v-btn>
+
+                </div>
 
                 <v-card-actions class="pt-0 px-5 d-flex justify-space-between">
                   <div>
-                    <v-icon class="mr-3" v-bind="attrs" v-on="on" color="green"
-                      >mdi-pencil</v-icon
-                    >
-                    <v-icon color="red">mdi-delete-variant</v-icon>
+                    <v-icon class=" d-flex justify-center" v-bind="attrs" v-on="on" color="green"
+                      >mdi-pencil</v-icon>
                   </div>
                   <span style="font-size: 11px">{{ item.date }}</span>
                 </v-card-actions>
@@ -223,7 +228,7 @@
 
 <script>
 import { mapState } from "vuex";
-import { onValue, ref, push, set, update } from "firebase/database";
+import { onValue, ref, remove, set, update } from "firebase/database";
 import firebase from "@/firebase/index";
 
 export default {
@@ -235,13 +240,10 @@ export default {
       this.values = this.user.entries;
     } else {
       let tokenId = (JSON.parse(localStorage.getItem('user')))._id
-      console.log(tokenId);
       onValue(ref(firebase.db, `users/${tokenId}/entries`),(snapshot=>{
         this.values = snapshot.val();
-        console.log(this.values);
       }))
     }
-    console.log(this.user);
   },
   data() {
     return {
@@ -311,7 +313,7 @@ export default {
 
     setNewData(){
       let keyId=(JSON.parse(localStorage.getItem('user')))._id
-      set(ref(firebase.db, `users/${keyId}/entries/${this.values.length}`), {
+      set(ref(firebase.db, `users/${keyId}/entries/${this.values!=null?this.values.length:0}`), {
         title: this.newRegist.title,
         content: this.newRegist.content ,
         icon: {
@@ -335,9 +337,19 @@ export default {
       return date.toJSON().slice(0,10)
     },
 
+    deleteEntrance(item){
+      let keyId=(JSON.parse(localStorage.getItem('user')))._id
+      let indexValue = this.values.indexOf(item);
+      this.values.splice(indexValue,1)
+      const updates = {}
+      updates[`users/${keyId}/entries`]=this.values
+      update(ref(firebase.db), updates)
+      // remove(ref(firebase.db,`users/${keyId}/entries/${indexValue}`))
+    },  
+
     updateData(data){
       let keyId=(JSON.parse(localStorage.getItem('user')))._id
-      let indexValue = this.values.indexOf(data);
+      let indexValue = this.values.indexOf(data)
       const updates = {}
       updates[`users/${keyId}/entries/${indexValue}`]={
         title: data.title,
@@ -350,6 +362,7 @@ export default {
       }
 
       update(ref(firebase.db), updates)
+      this.newRegist=this.newRegist1
     }
   },
 };

@@ -1,13 +1,14 @@
 <template>
-    <v-container fluid>
-        <v-row>
+    <v-container fluid class="d-flex justify-center">
+        <v-card elevation="0" max-width="500">
+            <v-row>
             <v-col cols="12" class="pb-0" >
               <v-sheet class="pa-5 d-flex flex-column justify-end" height="300">
                 <span class="text-h4 font-weight-bold">Iniciar Sección</span>
                 <span>Reistra tus datos para continuar.</span> 
               </v-sheet>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" >
                 <v-card class="pa-5" elevation="0">
                     <v-text-field
                     label="Correo"
@@ -37,6 +38,7 @@
                 </v-card>
             </v-col>
         </v-row>
+        </v-card>
         <v-card>
             
         </v-card>
