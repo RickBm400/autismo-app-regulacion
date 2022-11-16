@@ -84,7 +84,6 @@
                   <v-sheet width="100%" class="d-flex justify-center pt-2">
                     <v-btn
                       color="green"
-                      text
                       @click="dialog.value = false, setNewData()"
                       class="rounded-pill pt-0 white--text"
                     >
@@ -276,8 +275,8 @@ export default {
         title: "",
         content: "",
         icon: {
-          color: "",
-          icon: "",
+          icon: "mdi-emoticon-neutral-outline",
+          color: "orange",
         },
         date: "",
       },
@@ -285,8 +284,8 @@ export default {
         title: "",
         content: "",
         icon: {
-          color: "",
-          icon: "",
+          icon: "mdi-emoticon-neutral-outline",
+          color: "orange",
         },
         date: "",
       },

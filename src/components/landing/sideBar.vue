@@ -3,8 +3,8 @@
     <template v-slot:prepend>
       <v-list-item two-line>
         <v-list-item-avatar>
-          <v-avatar color="blue" size="62">
-            <v-icon color="white">mdi-account</v-icon>
+          <v-avatar color="blue" size="40">
+              <v-icon color="white">mdi-account</v-icon>
           </v-avatar>
         </v-list-item-avatar>
         <v-list-item-content>
@@ -48,7 +48,7 @@ export default {
         ...mapState('user',['user'])
     },
     mounted(){
-        this.userTag=(JSON.parse(localStorage.getItem('user'))).email
+        this.userTag=localStorage.getItem('user')!=null? JSON.parse(localStorage.getItem('user')).email:''
     },  
     methods:{
         ...mapMutations('user', ['logOut']),

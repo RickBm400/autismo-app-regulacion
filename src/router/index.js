@@ -6,17 +6,17 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Inicio Sección',
-    component: () => import('@/views/sections/login.vue')
-  },
-  {
     path: '/home',
     name: 'home',
     component: HomeView,
     meta:{
       requiresAuth:true
     }
+  },
+  {
+    path: '/login',
+    name: 'Inicio Sección',
+    component: () => import('@/views/sections/login.vue')
   },
   {
     path: '/daily-routine',
@@ -53,7 +53,9 @@ router.beforeEach((to, from, next)=>{
   const logged = JSON.parse(window.localStorage.getItem('user'));
   const reqAuth = to.matched.some(record=> record.meta.requiresAuth);
 
-  console.log(reqAuth);
+if (to.fullPath=='/') {
+  next('/login')
+}
   if (reqAuth) {
     if (logged!=null) {
       next()
