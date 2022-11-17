@@ -2,20 +2,20 @@
   <v-container fluid :class="$vuetify.breakpoint.smAndDown?'pa-0':'d-flex'">
     <v-card  :width="$vuetify.breakpoint.smAndDown?'100%': '40%'" elevation="0" class="align-center">
       <v-row >
-        <v-col :cols="$vuetify.breakpoint.smAndDown? 9:12">
+        <v-col :cols="$vuetify.breakpoint.smAndDown? 12:12">
           <v-card-title class="text-h5 font-weight-bold pb-5">
             Zona de desahogo
           </v-card-title>
-          <v-card-subtitle class="text-left" style="line-height: 1rem">
+          <v-card-subtitle class="text-left pt-5" style="line-height: 23px">
             Escribe aquí tus entradas diarias sobre pensamientos, ideas o
-            recuerdos importantes.
+            recuerdos importantes. Puedes agregarle un estado de animo a tus pensamientos haciendo click en cualquier icono de tu gusto.
           </v-card-subtitle>
         </v-col>
-        <v-col :cols="$vuetify.breakpoint.smAndDown? 3:12" class="d-flex align-center justify-center">
+        <v-col :cols="$vuetify.breakpoint.smAndDown? 12:12" class="d-flex align-center justify-center">
           <v-dialog max-width="400">
             <template v-slot:activator="{ on, off }">
               <v-btn
-                :icon="$vuetify.breakpoint.mdAndDown"
+               
                 plain
                 v-bind="off"
                 v-on="on"
@@ -24,7 +24,7 @@
                 :ripple="false"
               >
                 <v-icon> mdi-plus </v-icon>
-                <span v-if="!$vuetify.breakpoint.smAndDown" style="font-weight:800" class=" text-capitalize white--text">Nueva Entrada</span>
+                <span style="font-weight:800" class=" text-capitalize white--text">Nueva Entrada</span>
               </v-btn>
             </template>
             <template v-slot:default="dialog" >

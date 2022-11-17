@@ -8,8 +8,7 @@
         Herramientas
       </v-card-title>
       <v-card-text class="text-center" style="font-weight: 800">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta quis
-        autem atque? Alias dolore cupiditate dignissimos.
+        Encuentra ayuda e información sobre temáticas de tu interés haciendo click en cualquiera de las tarjetas. 
       </v-card-text>
     </v-card>
 
@@ -81,7 +80,7 @@
                       <span class="font-weight-bold"
                         >¿Por que me sucede esto?</span
                       >
-                      <p>{{ subItem.cause }}</p>
+                      <p v-html="subItem.cause"></p>
 
                       <span class="font-weight-bold">¿Como manejarlo?</span>
                       <p>{{ subItem.solution }}</p>
@@ -125,8 +124,8 @@ export default {
       //         {
       //           expand: false,
       //           qTitle: 'No me siento con energía',
-      //           cause: 'Causas del por qué no te sientes con energía',
-      //           solution: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat illum cum pariatur? Aperiam nam perferendis, ullam mollitia debitis ut hic, quis quaerat dolorem assumenda tempora id, corrupti cum fuga corporis!'
+      //           content: 'Causas del por qué no te sientes con <b>energía</b>',
+               
       //       },
       //       {
       //           expand: false,

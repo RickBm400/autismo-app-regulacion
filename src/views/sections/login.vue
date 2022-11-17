@@ -23,7 +23,10 @@
                     <v-text-field
                     filled
                     dense
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="show ? 'text' : 'password'"
                     v-model="password"
+                    @click:append="show=!show"
                     rounded
                     prepend-inner-icon="mdi-lock"
                     color="green"
@@ -54,8 +57,9 @@ import {  ref, onValue} from "firebase/database";
 export default {
     data(){
         return{
-            email:'rick@gmail.com',
-            password:'test1234',
+            email:'',
+            password:'',
+            show:false
         }
     },
     methods:{

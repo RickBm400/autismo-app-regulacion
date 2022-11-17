@@ -8,8 +8,7 @@
         Zona de Regulación
       </v-card-title>
       <v-card-text class="text-center">
-        Realiza un checkeo diario de ciertas actividades que quieres realizar,
-        de este modo puedes llevar un seguimiento de cosas que has realizado.
+        Realiza un checkeo diario de actividades que has realizado, puedes seleccionar una categoría y encontrarás una serie de preguntas relacionadas a un aspecto en particular. 
       </v-card-text>
     </v-card>
 
