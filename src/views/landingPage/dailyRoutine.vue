@@ -125,8 +125,10 @@
                 </v-icon>
               </v-card>
               <v-card style="width: 90%" class="rounded-l-0 rounded-r-lg" elevation="0">
-                <div class="d-flex align-center">
-                  <v-list-item two-line class="pr-0">
+                <div class="align-center">
+                 <v-row>
+                  <v-col cols="9">
+                    <v-list-item two-line class="pr-0">
                     <v-list-item-content>
                       <v-list-item-title class="font-weight-bold">
                         {{ item.title }}
@@ -136,9 +138,16 @@
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
-                  <v-btn @click="deleteEntrance(item)" elevation="0" plain class="px-4">
+                  </v-col>
+                  <v-col cols="3" class="d-flex align-center ">
+                    <v-btn @click="deleteEntrance(item)" elevation="0" plain class="px-4">
                     <v-icon color="red">mdi-delete-variant</v-icon>
                   </v-btn>
+                  </v-col>
+                 </v-row>
+
+                  
+
 
                 </div>
 
