@@ -145,10 +145,6 @@
                   </v-btn>
                   </v-col>
                  </v-row>
-
-                  
-
-
                 </div>
 
                 <v-card-actions class="pt-0 px-5 d-flex justify-space-between">

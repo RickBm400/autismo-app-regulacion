@@ -79,7 +79,7 @@ export default {
         {
           color: "red",
           title: "Zona de desahogo",
-          content: "Interface de usuario facil e intuitiva de comprender",
+          content: "Espacio para tu desahogo emocional y personal",
           icon: "mdi-spa-outline",
         },
         {
