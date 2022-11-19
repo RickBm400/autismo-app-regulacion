@@ -55,7 +55,7 @@
                 style="
                   font-weight: 800;
                   word-break: break-word;
-                  font-size: 25px;
+                  font-size: 25px
                 "
               >
                 {{ item.title }}
@@ -77,13 +77,7 @@
                 <v-expand-transition>
                   <v-sheet v-show="subItem.expand" height="auto" class="pa-2">
                     <div class="d-flex flex-column">
-                      <span class="font-weight-bold"
-                        >¿Por que me sucede esto?</span
-                      >
-                      <p v-html="subItem.cause"></p>
-
-                      <span class="font-weight-bold">¿Como manejarlo?</span>
-                      <p>{{ subItem.solution }}</p>
+                      <p v-html="subItem.content"></p>
                     </div>
                   </v-sheet>
                 </v-expand-transition>
